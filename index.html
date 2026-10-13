@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comfort Crew – Go Colors creator program</title>
+<meta name="description" content="Comfort Crew: a program that turns Go Colors customers and creators into a steady stream of Instagram videos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F6F6FA;
+    --ink: #24182F;
+    --ink-soft: #5E5468;
+    --line: #DCD8E3;
+    --wine: #8E2C48;
+    --olive: #6B7A3A;
+    --mustard: #D9A43B;
+    --teal: #2F7A7A;
+    --blush: #E7A9A4;
+    --lilac: #A895C9;
+    --navy: #2C3E66;
+    --rust: #B5562F;
+    --card: #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Instrument Sans", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", system-ui, sans-serif; line-height: 1.1; margin: 0; }
+  a { color: var(--wine); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* Nav */
+  nav { position: sticky; top: 0; background: rgba(246,246,250,.92); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); z-index: 10; }
+  nav .wrap { display: flex; gap: 22px; align-items: center; height: 56px; overflow-x: auto; white-space: nowrap; }
+  nav .brand { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 18px; margin-right: auto; color: var(--ink); text-decoration: none; }
+  nav a.link { color: var(--ink-soft); text-decoration: none; font-size: 15px; }
+  nav a.link:hover { color: var(--ink); }
+
+  /* Hero */
+  .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; padding: 72px 24px 64px; }
+  .hero h1 { font-size: clamp(56px, 9vw, 112px); font-weight: 800; letter-spacing: -0.03em; }
+  .hero .lead { font-size: 21px; color: var(--ink-soft); max-width: 34ch; margin: 20px 0 28px; }
+  .goals { display: flex; flex-wrap: wrap; gap: 28px; margin: 0; padding: 0; list-style: none; }
+  .goals li { max-width: 15ch; }
+  .goals strong { display: block; font-family: "Bricolage Grotesque", sans-serif; font-size: 34px; font-weight: 700; line-height: 1; }
+  .goals span { font-size: 14px; color: var(--ink-soft); }
+
+  /* Fabric stack */
+  .stack { display: flex; flex-direction: column; gap: 6px; }
+  .fold { height: 34px; border-radius: 6px 18px 18px 6px; position: relative; animation: slide .7s cubic-bezier(.2,.8,.2,1) both; }
+  .fold::after { content: ""; position: absolute; inset: 0 auto 0 0; width: 22px; border-radius: 6px 0 0 6px; background: rgba(0,0,0,.14); }
+  @keyframes slide { from { transform: translateX(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+  section { padding: 64px 0; border-top: 1px solid var(--line); }
+  section h2 { font-size: clamp(32px, 4.5vw, 46px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 12px; }
+  .intro { color: var(--ink-soft); max-width: 60ch; margin: 0 0 32px; font-size: 18px; }
+
+  /* Ladder */
+  .ladder { display: flex; flex-direction: column; gap: 10px; }
+  .level { display: grid; grid-template-columns: 210px 1fr; gap: 24px; align-items: center; background: var(--card); border-radius: 10px 26px 26px 10px; padding: 20px 24px 20px 0; border: 1px solid var(--line); overflow: hidden; }
+  .level .tab { align-self: stretch; display: flex; flex-direction: column; justify-content: center; padding: 0 22px; color: #fff; margin: -20px 0; }
+  .level .tab b { font-family: "Bricolage Grotesque", sans-serif; font-size: 26px; font-weight: 800; line-height: 1; }
+  .level .tab small { font-size: 14px; opacity: .9; }
+  .level h3 { font-size: 21px; font-weight: 700; margin-bottom: 4px; }
+  .level p { margin: 0; color: var(--ink-soft); }
+  .level .up { font-size: 14px; color: var(--ink); margin-top: 8px; }
+  .l3 { margin: 0 18% 0 0; } .l2 { margin: 0 12% 0 0; } .l1 { margin: 0 6% 0 0; }
+
+  /* Tables */
+  .table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+  .table th, .table td { text-align: left; padding: 16px 20px; vertical-align: top; border-bottom: 1px solid var(--line); }
+  .table th { font-size: 15px; font-weight: 600; color: var(--ink-soft); background: #EFEDF4; }
+  .table tr:last-child td { border-bottom: 0; }
+  .table td:first-child { font-weight: 600; width: 34%; }
+  .note { color: var(--ink-soft); margin-top: 16px; font-size: 16px; }
+
+  /* Steps */
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; counter-reset: s; }
+  
+  .steps > li { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px; counter-increment: s; position: relative; }
+  
+  .steps > li::before { content: counter(s); font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: 40px; line-height: 1; color: var(--wine); display: block; margin-bottom: 10px; }
+  .steps h3 { font-size: 21px; margin-bottom: 6px; }
+  .steps p { margin: 0; color: var(--ink-soft); }
+  .ideas { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; padding: 0; list-style: none; }
+  .ideas li { font-size: 14px; padding: 4px 12px; border-radius: 999px; background: #EFEDF4; }
+
+  /* Timeline */
+  .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+  .phase { padding: 0 20px 0 0; }
+  .phase .bar { height: 10px; border-radius: 6px; margin-bottom: 18px; }
+  .phase h3 { font-size: 24px; }
+  .phase .when { color: var(--ink-soft); font-size: 15px; margin: 2px 0 12px; }
+  .phase ul { margin: 0; padding-left: 18px; }
+  .phase li { margin-bottom: 4px; }
+  .check { margin-top: 18px; font-size: 14px; padding: 10px 12px; border-radius: 8px; background: var(--card); border: 1px solid var(--line); }
+  .check.big { border: 2px solid var(--wine); }
+  .check b { display: block; }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+  .box { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 24px; }
+  .box h3 { font-size: 21px; margin-bottom: 10px; }
+  .box ul { margin: 0; padding-left: 18px; }
+
+  footer { border-top: 1px solid var(--line); padding: 40px 0 56px; font-size: 14px; color: var(--ink-soft); }
+  footer ul { columns: 2; padding-left: 18px; margin: 10px 0 20px; }
+
+  @media (max-width: 820px) {
+    .hero { grid-template-columns: 1fr; padding-top: 48px; }
+    .level { grid-template-columns: 1fr; padding: 0 0 18px; border-radius: 12px; }
+    .level .tab { margin: 0; padding: 14px 20px; flex-direction: row; align-items: baseline; gap: 10px; }
+    .level > div:last-child { padding: 0 20px; }
+    .l3, .l2, .l1 { margin: 0; }
+    .steps, .two { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: 1fr; gap: 32px; }
+    .table td:first-child { width: auto; }
+    .table th, .table td { padding: 12px 14px; }
+    footer ul { columns: 1; }
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Sections">
+  <div class="wrap">
+    <a class="brand" href="#top">Comfort Crew</a>
+    <a class="link" href="#levels">Levels</a>
+    <a class="link" href="#rewards">Rewards</a>
+    <a class="link" href="#how">How it runs</a>
+    <a class="link" href="#legal">Legal</a>
+    <a class="link" href="#rollout">Rollout</a>
+  </div>
+</nav>
+
+<header class="wrap hero" id="top">
+  <div>
+    <h1>Comfort Crew</h1>
+    <p class="lead">The Go Colors creator program. Customers and creators post Reels of GC products, earn for the sales they bring, and move up to bigger rewards.</p>
+    <ul class="goals">
+      <li><strong>200</strong><span>people posting each month by month 3</span></li>
+      <li><strong>1,000</strong><span>people posting each month by month 6</span></li>
+      <li><strong>30%</strong><span>of GC's ads made from creator videos</span></li>
+    </ul>
+  </div>
+  <div class="stack" aria-hidden="true">
+    <div class="fold" style="background:var(--wine);width:72%;margin-left:auto;animation-delay:.05s"></div>
+    <div class="fold" style="background:var(--mustard);width:78%;margin-left:auto;animation-delay:.1s"></div>
+    <div class="fold" style="background:var(--teal);width:84%;margin-left:auto;animation-delay:.15s"></div>
+    <div class="fold" style="background:var(--blush);width:88%;margin-left:auto;animation-delay:.2s"></div>
+    <div class="fold" style="background:var(--olive);width:92%;margin-left:auto;animation-delay:.25s"></div>
+    <div class="fold" style="background:var(--lilac);width:95%;margin-left:auto;animation-delay:.3s"></div>
+    <div class="fold" style="background:var(--navy);width:98%;margin-left:auto;animation-delay:.35s"></div>
+    <div class="fold" style="background:var(--rust);width:100%;animation-delay:.4s"></div>
+  </div>
+</header>
+
+<main>
+<section id="levels">
+  <div class="wrap">
+    <h2>How people move up</h2>
+    <p class="intro">Anyone who buys from GC can join. People move up based on how well their videos sell, not how many followers they have. The idea copies what worked for Myntra, Gymshark and Daniel Wellington.</p>
+    <div class="ladder">
+      <div class="level l3">
+        <div class="tab" style="background:var(--wine)"><b>Level 3</b><small>5–10 people</small></div>
+        <div><h3>Collab partners</h3><p>Design a GC collection, star in shoots and events. Yearly contract plus a fee per collection.</p><p class="up">To get here: steady top performers who fit the brand.</p></div>
+      </div>
+      <div class="level l2">
+        <div class="tab" style="background:var(--teal)"><b>Level 2</b><small>Top 5%</small></div>
+        <div><h3>Ambassadors</h3><p>A fixed monthly fee for 4 videos, plus 12% of sales. GC runs their videos as paid ads.</p><p class="up">To get here: top 5% for sales and ad results.</p></div>
+      </div>
+      <div class="level l1">
+        <div class="tab" style="background:var(--olive)"><b>Level 1</b><small>2K–50K followers</small></div>
+        <div><h3>Gifted creators</h3><p>Free GC products every quarter, plus 8–10% of sales and a bonus when their video works well as an ad.</p><p class="up">To get here: posts regularly and makes first sales.</p></div>
+      </div>
+      <div class="level l0">
+        <div class="tab" style="background:var(--rust)"><b>Level 0</b><small>Every customer, 18+</small></div>
+        <div><h3>Open to all</h3><p>Post a Reel with #GCComfortCrew and #ad, get ₹150–250 to shop GC. After 3 approved videos: their own discount code and 8–10% of sales.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rewards">
+  <div class="wrap">
+    <h2>What people get</h2>
+    <p class="intro">Every reward is tied to an approved video, a sale or a good ad result. Amounts are a starting point to confirm with GC.</p>
+    <table class="table">
+      <thead><tr><th scope="col">Reward</th><th scope="col">Who gets it</th><th scope="col">Amount</th></tr></thead>
+      <tbody>
+        <tr><td>Shopping credit for each approved video</td><td>Level 0</td><td>₹150–250, up to 4 videos a month</td></tr>
+        <tr><td>A cut of every sale from their code or link</td><td>From Level 0, after 3 videos</td><td>8–10%; 12% at Level 2</td></tr>
+        <tr><td>Bonus when their video works well as an ad</td><td>Level 1 and up</td><td>A fixed bonus</td></tr>
+        <tr><td>Monthly fee, and GC can use their videos in ads</td><td>Levels 2–3</td><td>A fixed amount each month</td></tr>
+      </tbody>
+    </table>
+    <p class="note">We pay once a month by UPI, after the 30-day return window, with tax deducted. Nobody earns on their own orders.</p>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <h2>How it runs</h2>
+    <p class="intro">The same four steps repeat every month.</p>
+    <ol class="steps">
+      <li><h3>Monthly brief</h3><p>We pick 2–3 products to push (people earn 1.5x on these) and share five easy video ideas.</p>
+        <ul class="ideas"><li>The comfort test</li><li>One pant, three looks</li><li>Fit check by size</li><li>A day in my comfort zone</li><li>Colour haul</li></ul></li>
+      <li><h3>Review</h3><p>We check every video within 48 hours. It must show the product clearly, say it's an ad, and make no claims we can't prove.</p></li>
+      <li><h3>Best videos become ads</h3><p>Every week, the best videos run as paid ads from the creator's account. What works goes into next month's brief.</p></li>
+      <li><h3>Tools</h3><p>A platform like Wishlink tracks links and pays creators. Wirality handles the reviews.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="legal">
+  <div class="wrap">
+    <h2>Staying legal in India</h2>
+    <p class="intro">Free products, shopping credit and sales cuts all count as payment, so every video is an ad in the eyes of the rules.</p>
+    <table class="table">
+      <thead><tr><th scope="col">Rule</th><th scope="col">What it means for us</th></tr></thead>
+      <tbody>
+        <tr><td>ASCI guidelines</td><td>Every video must say it's an ad (#ad or Instagram's paid-partnership tag). We remove videos that don't.</td></tr>
+        <tr><td>Government endorsement rules<br><small>Fines up to ₹10 lakh, ₹50 lakh for repeats</small></td><td>The ad label must be in the video's language. Creators must have used the product. No claims we can't prove.</td></tr>
+        <tr><td>Tax on free products (Section 194R)</td><td>If someone keeps more than ₹20,000 of free products or credit in a year, 10% tax must be deducted. We keep Levels 0–1 under this limit.</td></tr>
+        <tr><td>Tax on payments, and GST</td><td>Tax is deducted before we pay. Creators registered for GST send a GST invoice. GC's CA should confirm the details under the new Income-tax Act (from April 2026).</td></tr>
+        <tr><td>Data and video rights (DPDP Act)</td><td>Only people 18+. We ask clear permission before collecting PAN or UPI details, and written permission to use their videos in ads.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="rollout">
+  <div class="wrap">
+    <h2>Rollout and what we measure</h2>
+    <p class="intro">Month 3 is the big decision: we grow the program only if creator videos win customers as cheaply as our other ads.</p>
+    <div class="timeline">
+      <div class="phase">
+        <div class="bar" style="background:var(--rust)"></div>
+        <h3>Set up</h3><p class="when">Weeks 1–4</p>
+        <ul><li>Legal and tax set-up</li><li>Tracking and reviews</li><li>First monthly brief</li><li>Gift 50 GC creators</li></ul>
+        <div class="check"><b>Check</b>Legal and tax sign-off</div>
+      </div>
+      <div class="phase">
+        <div class="bar" style="background:var(--olive)"></div>
+        <h3>Pilot</h3><p class="when">Months 2–3</p>
+        <ul><li>Levels 0–1 open</li><li>QR codes in stores and parcels</li><li>First creator ads</li><li>Best videos into ads</li></ul>
+        <div class="check big"><b>Big decision</b>200 people posting, creator ads as cheap as other ads</div>
+      </div>
+      <div class="phase">
+        <div class="bar" style="background:var(--teal)"></div>
+        <h3>Scale</h3><p class="when">Months 4–6</p>
+        <ul><li>Level 2 ambassadors</li><li>Videos in regional languages</li><li>Codes work in stores</li><li>Monthly challenges</li></ul>
+        <div class="check"><b>Check</b>1,000 people posting</div>
+      </div>
+      <div class="phase">
+        <div class="bar" style="background:var(--wine)"></div>
+        <h3>Collab</h3><p class="when">Month 6 onward</p>
+        <ul><li>First creator collection</li><li>Creator events in stores</li><li>Yearly contracts</li></ul>
+      </div>
+    </div>
+
+    <div class="two">
+      <div class="box">
+        <h3>What we measure</h3>
+        <ul>
+          <li>How many people post each month</li>
+          <li>How many videos get approved</li>
+          <li>Cost to win a customer through creator ads, compared with other ads</li>
+          <li>Every video labelled as an ad (target: 100%)</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>What we need from GC</h3>
+        <ul>
+          <li>Current ad costs and average order value</li>
+          <li>Product margins</li>
+          <li>Whether store billing can accept creator codes</li>
+          <li>Who handles tax and payouts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <strong>Sources</strong>
+    <ul>
+      <li><a href="https://www.afaqs.com/marketing/how-myntra-is-turning-shoppers-into-creators-concerts-into-commerce-10651733">afaqs – Myntra shopper-creators</a></li>
+      <li><a href="https://archive.com/blog/gymshark-influencer-marketing-strategy">Archive – Gymshark</a></li>
+      <li><a href="https://archive.com/blog/daniel-wellington-influencer-marketing-strategy">Archive – Daniel Wellington</a></li>
+      <li><a href="https://inc42.com/buzz/wishlink-raises-17-5-mn-to-expand-creator-network">Inc42 – Wishlink</a></li>
+      <li><a href="https://www.grynow.in/blog/asci-guidelines-for-influencer-marketing-in-india.html">GRYNOW – ASCI guidelines</a></li>
+      <li><a href="https://www.manoramayearbook.in/current-affairs/india/2023/01/21/guidelines-for-social-media-influencers.html">Manorama – CCPA endorsement rules</a></li>
+      <li><a href="https://cleartax.in/s/influencer-tax-tds-on-social-media-influencers-under-section-194r-explained">ClearTax – Section 194R</a></li>
+      <li><a href="https://www.azbpartners.com/bank/update-indias-digital-personal-data-protection-framework-comes-into-effect/">AZB – DPDP Rules 2025</a></li>
+    </ul>
+    <p>Prepared by Wirality Media for Go Colors · October 2026. A planning document, not legal or tax advice.</p>
+  </div>
+</footer>
+
+</body>
+</html>
